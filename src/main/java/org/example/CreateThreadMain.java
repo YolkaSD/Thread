@@ -5,16 +5,16 @@ public class CreateThreadMain {
         SomeThingOne someThingOne = new SomeThingOne();
         SomeThingTwo someThingTwo = new SomeThingTwo();
         Thread thread1 = new Thread(someThingOne);
-        Thread thread2 = new Thread(someThingTwo);
         Thread thread3 = new Thread(() -> System.out.println(Thread.currentThread().getName() + " Hello from lambda Thread"));
         thread1.start();
-        thread2.start();
+        someThingTwo.start();
         thread3.start();
         System.out.println(Thread.currentThread().getName() + " Hello from main Thread");
     }
 }
 
 class SomeThingOne implements Runnable {
+
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + " Hello from Runnable");
