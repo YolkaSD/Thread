@@ -1,4 +1,4 @@
-package org.example;
+package org.example.createdthread;
 
 public class CreateThreadMain {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.chickenvoice;
 
 public class ChickenVoice {
     static EggVoice mAnotherOpinion;
