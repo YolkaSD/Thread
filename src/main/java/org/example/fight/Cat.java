@@ -11,10 +11,10 @@ public class Cat implements Runnable{
     public static final List<Cat> cats = new CopyOnWriteArrayList<>();
 
     // Имя и количество жизней
-    private String name;
+    private final String name;
     private volatile int life;
     // Личный поток
-    private Thread thread;
+    private final Thread thread;
 
     // Конструктор: задаем параметры и добавляем в статический список
     public Cat(String name, int life, String threadName) {
