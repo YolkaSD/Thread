@@ -12,12 +12,14 @@ public class Program {
             //t.join();
         }
 
+        Thread.sleep(2000);
+        System.out.println(commonResources.getX());
 
     }
 }
 
 class CommonResources {
-    private int x = 1;
+    private int x = 0;
 
     public synchronized int getX() {
         return x;
@@ -46,8 +48,15 @@ class CountThread implements Runnable {
     public void run() {
 
         for (int i = 0; i < 5; i++) {
+            if (Thread.currentThread().getName().equals("Thread 5") || Thread.currentThread().getName().equals("Thread 4")) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            res.setX(res.getX() + 1);
             System.out.printf("%s %d \n", Thread.currentThread().getName(), res.getX());
-            res.incrementX();
         }
 
     }

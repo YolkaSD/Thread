@@ -16,8 +16,10 @@ public class Main {
         thread1.start();
         thread2.start();
 
-        thread1.join();
-        thread2.join();
+        Thread.sleep(10);
+
+//        thread1.join();
+//        thread2.join();
 
         System.out.println(resource.getI());
 
