@@ -21,7 +21,8 @@ public class Main {
 //        thread1.join();
 //        thread2.join();
 
-        System.out.println(resource.getI());
+        System.out.println("I = " + resource.getI());
+        System.out.println("Y = " + Resource.getY());
 
     }
 }
@@ -36,11 +37,13 @@ class MyThread implements Runnable {
     @Override
     public void run() {
         resource.changeI();
+        Resource.changeStaticY();
     }
 }
 
 class Resource {
     private int i;
+    private static int y = 0;
 
     public Resource(int i) {
         this.i = i;
@@ -50,10 +53,21 @@ class Resource {
         return i;
     }
 
+    public static int getY() {
+        return y;
+    }
+
     public synchronized void changeI() {
         int i = this.i;
         if (Thread.currentThread().getName().equals("one")) Thread.yield();
         i++;
         this.i = i;
+    }
+
+    public synchronized static void changeStaticY() {
+        int y = Resource.y;
+        if (Thread.currentThread().getName().equals("one")) Thread.yield();
+        y++;
+        Resource.y = y;
     }
 }

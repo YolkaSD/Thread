@@ -21,11 +21,11 @@ public class Program {
 class CommonResources {
     private int x = 0;
 
-    public synchronized int getX() {
+    public int getX() {
         return x;
     }
 
-    public synchronized void setX(int x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -55,8 +55,12 @@ class CountThread implements Runnable {
                     throw new RuntimeException(e);
                 }
             }
-            res.setX(res.getX() + 1);
-            System.out.printf("%s %d \n", Thread.currentThread().getName(), res.getX());
+
+            synchronized (res) {
+                res.setX(res.getX() + 1);
+                System.out.printf("%s %d \n", Thread.currentThread().getName(), res.getX());
+            }
+
         }
 
     }
