@@ -25,7 +25,7 @@ class Picture {
     private volatile int picture = 0;
 
     public synchronized void addPic() throws InterruptedException {
-        while (picture > 3) {
+        while (picture > 0) {
             System.out.println("Отдыхаю!");
             wait();
         }
