@@ -52,10 +52,10 @@ public class Philosopher implements Runnable {
         try {
             sitAtTheTable();
             while (true) {
-                sharedTable.takeFork(this);
+                sharedTable.takeLeftFork(this);
+                sharedTable.takeRightFork(this);
                 if (leftHand && rightHand) {
                     eating();
-
                 }
             }
         } catch (InterruptedException e) {
